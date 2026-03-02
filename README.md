@@ -16,7 +16,7 @@
 
 **Установить пакет в проект**
 
- - composer composer require a.emelyanenko/bracket-validator
+ - composer require a.emelyanenko/bracket-validator
 
  **Подключить пакет в проект**
 
