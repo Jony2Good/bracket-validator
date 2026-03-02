@@ -21,19 +21,30 @@
  **Подключить пакет в проект**
 
  ```
-use Emelyanenko\BracketValidator\BracketValidator;
+use Emelyanenko\BracketValidator\Service\BracketValidatorService;
 use Emelyanenko\BracketValidator\Exceptions\BracketException;
 ```
 
 **Пример использования**
 
 ```
-$v = new BracketValidator();
+$service = new BracketValidatorService();
+
+header('Content-Type: application/json; charset=utf-8');
 
 try {
-  $data = $_POST['string'] ?? '';
-  return $v->validate($data);   
-} catch (BracketException $e) {   
-    echo "Ошибка валидации: " . $e->getMessage();
+    $input = $_POST['string'] ?? '';
+    $service->validate($input);
+
+    http_response_code(200);
+    echo "200 OK: Всё хорошо";
+
+} catch (InvalidBracketsException $e) {
+    http_response_code(400);
+    echo "400 Bad Request: " . $e->getMessage();
+
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo "500 Internal Server Error";
 } 
  ```

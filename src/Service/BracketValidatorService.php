@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Emelyanenko\BracketValidator;
+namespace Emelyanenko\BracketValidator\Service;
 
 use Emelyanenko\BracketValidator\Exceptions\EmptyStringException;
 use Emelyanenko\BracketValidator\Exceptions\InvalidCountException;
 
-class BracketValidator
+class BracketValidatorService
 {
     /**
      * @throws EmptyStringException
